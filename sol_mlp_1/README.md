@@ -17,8 +17,8 @@ All molecule structures were standardized with the `medchemrac` protocol of `sta
 
 In order to maximize unbiasedness during the training process, the holdback data used for validation and the training data are separated by Murcko scaffold, i.e. any scaffold (molecular framework) that is present in the holdback validation data was completely removed from the training data.
 
-18 Standard RDKit descriptors plus the RDKit fragment counts were used as labels, all labels were range-scaled between 0 and 1, separately for each dataset used per model (but for train and holdback combined; file names containing the term `scaled`).  
-Other options for labels (different fingerprints) might be considered later, as well as a completely different network structure (e.g. [PyTorch AttentiveFP](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.AttentiveFP.html)), but these require more setup.
+18 Standard RDKit descriptors plus the RDKit fragment counts were used as features, all features were range-scaled between 0 and 1, separately for each dataset used per model (but for train and holdback combined; file names containing the term `scaled`). The binary label is `Solub_Class`.  
+Other options for features (different fingerprints) might be considered later, as well as a completely different network structure (e.g. [PyTorch AttentiveFP](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.AttentiveFP.html)), but these require more setup.
 
 The models were created on a VM of the Fraunhofer EdgeCloud using an Nvidia A100 graphics card. Several random seeds were explored and the model with the best balanced performance (accuracy, precision, recall and f1) was kept
 
